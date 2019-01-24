@@ -1,0 +1,11 @@
+package com.nathanlind.foodbankagencycontacts.controller;
+
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/api/agency/{agencyAccountNumber}/note")
+public class NoteController {
+
+}
