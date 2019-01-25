@@ -18,8 +18,14 @@ public class Agency {
     private String agencyAccountNumber;
 
     private String agencyParentOrganization;
-    private String agencyMailingAddress;
-    private String agencyPhysicalAddress;
+    private String agencyMailingStreetAddress;
+    private String agencyMailingCity;
+    private String agencyMailingState;
+    private String agencyMailingZipCode;
+    private String agencyPhysicalStreetAddress;
+    private String agencyPhysicalCity;
+    private String agencyPhysicalState;
+    private String agencyPhysicalZipCode;
     private String agencyWebstoreLogin;
     private String agencyWebstorePassword;
     private String agencySchedulingLogin;
@@ -63,20 +69,68 @@ public class Agency {
         this.agencyParentOrganization = agencyParentOrganization;
     }
 
-    public String getAgencyMailingAddress() {
-        return agencyMailingAddress;
+    public String getAgencyMailingStreetAddress() {
+        return agencyMailingStreetAddress;
     }
 
-    public void setAgencyMailingAddress(String agencyMailingAddress) {
-        this.agencyMailingAddress = agencyMailingAddress;
+    public void setAgencyMailingStreetAddress(String agencyMailingStreetAddress) {
+        this.agencyMailingStreetAddress = agencyMailingStreetAddress;
     }
 
-    public String getAgencyPhysicalAddress() {
-        return agencyPhysicalAddress;
+    public String getAgencyMailingCity() {
+        return agencyMailingCity;
     }
 
-    public void setAgencyPhysicalAddress(String agencyPhysicalAddress) {
-        this.agencyPhysicalAddress = agencyPhysicalAddress;
+    public void setAgencyMailingCity(String agencyMailingCity) {
+        this.agencyMailingCity = agencyMailingCity;
+    }
+
+    public String getAgencyMailingState() {
+        return agencyMailingState;
+    }
+
+    public void setAgencyMailingState(String agencyMailingState) {
+        this.agencyMailingState = agencyMailingState;
+    }
+
+    public String getAgencyMailingZipCode() {
+        return agencyMailingZipCode;
+    }
+
+    public void setAgencyMailingZipCode(String agencyMailingZipCode) {
+        this.agencyMailingZipCode = agencyMailingZipCode;
+    }
+
+    public String getAgencyPhysicalStreetAddress() {
+        return agencyPhysicalStreetAddress;
+    }
+
+    public void setAgencyPhysicalStreetAddress(String agencyPhysicalStreetAddress) {
+        this.agencyPhysicalStreetAddress = agencyPhysicalStreetAddress;
+    }
+
+    public String getAgencyPhysicalCity() {
+        return agencyPhysicalCity;
+    }
+
+    public void setAgencyPhysicalCity(String agencyPhysicalCity) {
+        this.agencyPhysicalCity = agencyPhysicalCity;
+    }
+
+    public String getAgencyPhysicalState() {
+        return agencyPhysicalState;
+    }
+
+    public void setAgencyPhysicalState(String agencyPhysicalState) {
+        this.agencyPhysicalState = agencyPhysicalState;
+    }
+
+    public String getAgencyPhysicalZipCode() {
+        return agencyPhysicalZipCode;
+    }
+
+    public void setAgencyPhysicalZipCode(String agencyPhysicalZipCode) {
+        this.agencyPhysicalZipCode = agencyPhysicalZipCode;
     }
 
     public String getAgencyWebstoreLogin() {

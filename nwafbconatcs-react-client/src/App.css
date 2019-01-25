@@ -22,6 +22,32 @@
   color: #61dafb;
 }
 
+.navbar-logo-green {
+  font-weight: bold !important;
+  color: #586A30 !important;
+}
+
+.navbar-logo-orange {
+  font-weight: bold !important;
+  color: #EB8423 !important;
+}
+
+.btn-color-green {
+  color: #ffffff !important;
+  background-color: #586A30 !important;
+}
+
+.btn-color-orange {
+  color: #ffffff !important;
+  background-color: #EB8423 !important;
+}
+
+.navbar-default {
+  background-color: #39343A;
+  background-image: none;
+  background-repeat: no-repeat;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
