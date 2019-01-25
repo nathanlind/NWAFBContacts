@@ -1,8 +1,18 @@
 import React, {Component} from 'react';
-import EditAgencyButton from "./EditAgencyButton";
+import {Link} from "react-router-dom";
+import { deleteAgency } from "../../actions/agencyActions";
+import PropTypes from "prop-types";
+import {connect} from "react-redux";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+
 
 
 class AgencyItem extends Component {
+
+    onDeleteClick = agencyAccountNumber => {
+        this.props.deleteAgency(agencyAccountNumber);
+    };
+
     render() {
 
         const {agency} = this.props;
@@ -49,7 +59,16 @@ class AgencyItem extends Component {
                             <div className="col-auto mr-auto">
                             </div>
                             <div className="col-auto">
-                                <EditAgencyButton/>
+                                <div className="btn-group mr-2" role="group">
+                                    <Link to={`/updateAgency/${agency.agencyAccountNumber}`}>
+                                        <button type="button"
+                                                className="btn btn-secondary"><FontAwesomeIcon icon="edit" /></button>
+                                    </Link>
+                                    <button type="button"
+                                            className="btn btn-color-red"
+                                            onClick={this.onDeleteClick.bind(this, agency.agencyAccountNumber)}
+                                    ><FontAwesomeIcon icon="trash" /></button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -58,4 +77,9 @@ class AgencyItem extends Component {
     }
 }
 
-export default AgencyItem;
+
+AgencyItem.propTypes = {
+    deleteAgency: PropTypes.func.isRequired
+};
+
+export default connect(null, {deleteAgency})(AgencyItem);

@@ -10,6 +10,7 @@ import store from "./store";
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faEdit, faTrash} from "@fortawesome/free-solid-svg-icons";
+import UpdateAgency from "./components/Agency/UpdateAgency";
 
 
 library.add(faEdit);
@@ -25,6 +26,7 @@ class App extends Component {
                 <Navbar/>
                 <Route exact path="/dashboard" component={Dashboard}/>
                 <Route exact path="/addAgency" component={AddAgency}/>
+                <Route exact path="/updateAgency/:id" component={UpdateAgency}/>
               </div>
             </Router>
         </Provider>

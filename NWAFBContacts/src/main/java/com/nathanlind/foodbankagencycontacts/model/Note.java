@@ -2,10 +2,7 @@ package com.nathanlind.foodbankagencycontacts.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.util.Date;
 
@@ -20,6 +17,7 @@ public class Note {
     private String noteContents;
 
     @JsonFormat(pattern = "yyyy-mm-dd")
+    @Column(updatable = false)
     private Date creationDate;
     @JsonFormat(pattern = "yyyy-mm-dd")
     private Date modificationDate;
