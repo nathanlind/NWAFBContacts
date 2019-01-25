@@ -10,10 +10,10 @@ public class Agency {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "Agency Name is required")
+    @NotBlank(message = "Agency Name is required.")
     private String agencyName;
 
-    @NotBlank(message = "Account Number is required")
+    @NotBlank(message = "Account Number is required.")
     @Column(updatable = false, unique = true)
     private String agencyAccountNumber;
 

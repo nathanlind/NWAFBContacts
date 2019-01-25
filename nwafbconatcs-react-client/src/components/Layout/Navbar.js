@@ -5,21 +5,20 @@ class Navbar extends Component {
         return (
             <nav className="navbar navbar-expand-sm navbar-dark navbar-default mb-4">
                 <div className="container">
-                    <div className="navbar-brand navbar-logo-orange">
-                        NWA<span className="navbar-brand navbar-logo-green">FB</span>
+                    <div className="navbar-brand logo-font-orange">
+                        NWA<span className="navbar-brand logo-font-green">FB</span>
                     </div>
-                    <button className="navbar-toggler" type="button" data-toggle="collapse"
-                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
+                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-nav">
                         <span className="navbar-toggler-icon"/>
                     </button>
 
-                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div className="collapse navbar-collapse" id="mobile-nav">
                         <ul className="navbar-nav mr-auto">
-                            <li className="nav-item active">
-                                <a className="nav-link" href="#">Dashboard<span className="sr-only">(current)</span></a>
+                            <li className="nav-item">
+                                <a className="nav-link" href="/dashboard">
+                                    Dashboard
+                                </a>
                             </li>
-
                         </ul>
                         <ul className="navbar-nav ml-auto">
                             <li className="nav-item">
