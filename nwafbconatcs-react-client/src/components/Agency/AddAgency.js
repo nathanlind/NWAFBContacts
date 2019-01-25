@@ -68,7 +68,7 @@ class AddAgency extends Component {
         return (
             <div className="col-md-6 offset-3">
                 <div className="card bg-light shadow p-3 mb-5 bg-white rounded mx-auto">
-                    <div className="card-header alert alert-secondary display-4 logo-font-green text-center">Add New Agency</div>
+                    <h2 className="card-header alert alert-secondary logo-font-green text-center">Add New Agency</h2>
                     <div className="card-body">
                         <form onSubmit={this.onSubmit}>
                             <div className="form-row text-left">

@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import EditAgencyButton from "./EditAgencyButton";
+
 
 class AgencyItem extends Component {
     render() {
@@ -19,7 +21,7 @@ class AgencyItem extends Component {
                                 <p><strong>Parent Organization:</strong> {agency.agencyParentOrganization}</p>
                             </div>
                         </div>
-                        <div className="row justify-content-start">
+                        <div className="row justify-content-start mb-4">
                             <div className="col-3">
                                 <p className="mb-1"><strong>Mailing Address:</strong></p>
                                 <p className="mb-0">{agency.agencyMailingStreetAddress}</p>
@@ -41,6 +43,13 @@ class AgencyItem extends Component {
                                 <p className="mb-3">{agency.agencySchedulingLogin}</p>
                                 <p className="mb-1"><strong>Scheduling Password:</strong></p>
                                 <p className="mb-0">{agency.agencySchedulingPassword}</p>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-auto mr-auto">
+                            </div>
+                            <div className="col-auto">
+                                <EditAgencyButton/>
                             </div>
                         </div>
                     </div>

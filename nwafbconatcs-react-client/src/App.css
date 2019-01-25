@@ -37,12 +37,33 @@
   background-color: #586A30 !important;
 }
 
+.btn-color-green:hover {
+  color: #ffffff !important;
+  background-color: #414f23 !important;
+}
+
+
 .btn-color-orange {
   color: #ffffff !important;
   background-color: #EB8423 !important;
 }
 
-.navbar-default {
+.btn-color-orange:hover {
+  color: #ffffff !important;
+  background-color: #d67820 !important;
+}
+
+.btn-color-red {
+  color: #ffffff !important;
+  background-color: #FE2E2E !important;
+}
+
+.btn-color-red:hover {
+  color: #ffffff !important;
+  background-color: #DF0101 !important;
+}
+
+.navbar-color-dark {
   background-color: #39343A;
   background-image: none;
   background-repeat: no-repeat;
