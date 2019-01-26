@@ -1,9 +1,8 @@
 package com.nathanlind.foodbankagencycontacts.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.springframework.lang.NonNull;
+
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -13,17 +12,15 @@ public class Contact {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
-    private String agencyAccountNumber;
-
-    @NotBlank(message = "Contact First Name is required")
-    private String contactFirstName;
-
-    @NotBlank(message = "Contact Last Name is required")
-    private String contactLastName;
+    @NotBlank(message = "Contact Name is required")
+    private String contactName;
 
     private String contactPhoneNumber;
     private String contactEmailAddress;
+
+    @ManyToOne
+    @NonNull
+    private Agency agency;
 
 
     private Contact() {
@@ -39,20 +36,12 @@ public class Contact {
         this.id = id;
     }
 
-    public String getContactFirstName() {
-        return contactFirstName;
+    public String getContactName() {
+        return contactName;
     }
 
-    public void setContactFirstName(String contactFirstName) {
-        this.contactFirstName = contactFirstName;
-    }
-
-    public String getContactLastName() {
-        return contactLastName;
-    }
-
-    public void setContactLastName(String contactLastName) {
-        this.contactLastName = contactLastName;
+    public void setContactName(String contactName) {
+        this.contactName = contactName;
     }
 
     public String getContactPhoneNumber() {
@@ -69,5 +58,13 @@ public class Contact {
 
     public void setContactEmailAddress(String contactEmailAddress) {
         this.contactEmailAddress = contactEmailAddress;
+    }
+
+    public Agency getAgency() {
+        return agency;
+    }
+
+    public void setAgency(Agency agency) {
+        this.agency = agency;
     }
 }

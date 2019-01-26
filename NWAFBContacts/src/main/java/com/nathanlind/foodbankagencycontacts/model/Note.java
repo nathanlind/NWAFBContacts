@@ -22,4 +22,6 @@ public class Note {
     @JsonFormat(pattern = "yyyy-mm-dd")
     private Date modificationDate;
 
+    @ManyToOne
+    private Agency agency;
 }

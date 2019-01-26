@@ -11,7 +11,7 @@
     <groupId>com.nathanlind</groupId>
     <artifactId>foodbankagencycontacts</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>foodbankagencycontacts</name>
+    <name>NWAFBContacts</name>
     <description>Food Bank Agency Contacts</description>
 
     <properties>

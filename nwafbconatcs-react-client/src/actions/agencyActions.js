@@ -4,8 +4,7 @@ import {GET_ERRORS, GET_AGENCIES, GET_AGENCY, DELETE_AGENCY} from "./types";
 
 export const createAgency = (agency, history) => async dispatch => {
     try {
-        const res = await axios.post
-        ("/api/agency", agency);
+        const res = await axios.post("/api/agency", agency);
         history.push("/dashboard")
         dispatch({
             type: GET_ERRORS,
@@ -40,7 +39,7 @@ export const getAgency = (agencyAccountNumber, history) => async dispatch => {
 };
 
 export const deleteAgency = agencyAccountNumber => async dispatch => {
-    if(window.confirm("Are you sure you want to delete this Agency?")) {
+    if(window.confirm("Delete Agency?")) {
         await axios.delete(`/api/agency/${agencyAccountNumber}`);
         dispatch({
             type: DELETE_AGENCY,

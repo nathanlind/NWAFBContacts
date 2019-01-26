@@ -22,7 +22,7 @@ class SearchBar extends Component {
 
     render() {
         return (
-            <div className="input-group input-group-lg mb-0">
+            <div className="input-group input-group-lg shadow mb-0">
                 <input type="text"
                        className="form-control"
                        placeholder="Agency Name or Account Number"

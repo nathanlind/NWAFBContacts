@@ -5,7 +5,7 @@ const AddNewAgencyButton = () => {
     return (
         <div className="container">
             <div className="row justify-content-start">
-                    <Link to="addAgency" className="btn btn-lg btn-color-green mb-4">
+                    <Link to="addAgency" className="btn btn-lg btn-color-green shadow mb-4">
                         Add New Agency
                     </Link>
             </div>

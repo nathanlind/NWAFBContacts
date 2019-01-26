@@ -63,10 +63,24 @@
   background-color: #DF0101 !important;
 }
 
+.btn-color-blue {
+  color: #ffffff !important;
+  background-color: #2E9AFE !important;
+}
+
+.btn.color-blue:hover {
+  color: #ffffff !important;
+  background-color: #0174DF !important;
+}
+
 .navbar-color-dark {
   background-color: #39343A;
   background-image: none;
   background-repeat: no-repeat;
+}
+
+textarea {
+  height: 150px !important;
 }
 
 @keyframes App-logo-spin {

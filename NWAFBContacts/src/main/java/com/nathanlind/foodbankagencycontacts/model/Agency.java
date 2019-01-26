@@ -2,6 +2,8 @@ package com.nathanlind.foodbankagencycontacts.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Agency {
@@ -30,6 +32,12 @@ public class Agency {
     private String agencyWebstorePassword;
     private String agencySchedulingLogin;
     private String agencySchedulingPassword;
+
+    @OneToMany(mappedBy = "agency")
+    private List<Contact> contacts = new ArrayList<>();
+
+    @OneToMany(mappedBy = "agency")
+    private List<Note> notes = new ArrayList<>();
 
 
     private Agency() {
