@@ -1,9 +1,20 @@
 import React, {Component} from 'react';
 import {Link} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import PropTypes from 'prop-types';
+import {connect} from "react-redux";
+import {deleteContact} from "../../actions/contactActions";
+
 
 class ContactItem extends Component {
+
+    onDeleteClick = (agencyAccountNumber, contactId) => {
+        this.props.deleteContact(agencyAccountNumber, contactId);
+    };
+
     render() {
+        const {contact} = this.props;
+        const {agency} = this.props;
 
         return (
             <div className="card text-left col-12 bg-light shadow mb-4 bg-white rounded">
@@ -11,15 +22,15 @@ class ContactItem extends Component {
                     <div className="row">
                         <div className="col-3">
                             <p className="mb-1"><strong>Contact Name:</strong></p>
-                            <p>Placeholder Name</p>
+                            <p>{contact.contactName}</p>
                         </div>
                         <div className="col-3">
                             <p className="mb-1"><strong>Phone Number:</strong></p>
-                            <p className="mb-1">(555)555-5555</p>
+                            <p className="mb-1">{contact.contactPhoneNumber}</p>
                         </div>
                         <div className="col-3">
                             <p className="mb-1"><strong>Email Address:</strong></p>
-                            <p className="mb-1">placeholder@email.com</p>
+                            <p className="mb-1">{contact.contactEmailAddress}</p>
                         </div>
                         <div className="col-auto mr-auto">
                         </div>
@@ -28,7 +39,9 @@ class ContactItem extends Component {
                                 <button type="button"
                                         className="btn btn-secondary"><FontAwesomeIcon icon="edit" /></button>
                                 <button type="button"
-                                        className="btn btn-color-red"><FontAwesomeIcon icon="trash" /></button>
+                                        className="btn btn-color-red"
+                                        onClick={this.onDeleteClick.bind(this, agency.agencyAccountNumber, contact.id)}
+                                ><FontAwesomeIcon icon="trash" /></button>
                             </div>
                         </div>
                     </div>
@@ -38,4 +51,10 @@ class ContactItem extends Component {
     }
 }
 
-export default ContactItem;
+ContactItem.propTypes = {
+    contact: PropTypes.object.isRequired,
+    agency: PropTypes.object.isRequired,
+    deleteContact: PropTypes.func.isRequired
+};
+
+export default connect(null, {deleteContact})(ContactItem);

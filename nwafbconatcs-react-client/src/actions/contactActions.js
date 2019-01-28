@@ -1,10 +1,11 @@
 import axios from "axios";
-import {GET_ERRORS, GET_CONTACT, GET_CONTACTS, DELETE_CONTACT} from "./types";
+import {GET_ERRORS, GET_CONTACTS, DELETE_CONTACT} from "./types";
 
 
-export const createContact = (contact, agencyAccountNumber) => async dispatch => {
+export const createContact = (agencyAccountNumber, contact, history) => async dispatch => {
     try{
-        const res = await axios.post(`/api/agency/${agencyAccountNumber}/contact`);
+        await axios.post(`/api/agency/${agencyAccountNumber}/contact`, contact);
+        history.push("/dashboard");
         dispatch({
             type: GET_ERRORS,
             payload: {}
@@ -17,7 +18,8 @@ export const createContact = (contact, agencyAccountNumber) => async dispatch =>
     }
 };
 
-export const getContacts = (agencyAccountNumber) => async dispatch => {
+
+export const getContacts = agencyAccountNumber => async dispatch => {
     const res = await axios.get(`/api/agency/${agencyAccountNumber}/contact/all`);
     dispatch({
         type: GET_CONTACTS,
@@ -25,20 +27,8 @@ export const getContacts = (agencyAccountNumber) => async dispatch => {
     })
 };
 
-export const getContact = (contactId, agencyAccountNumber) => async dispatch => {
-    try {
-        const res = await axios.get(`/api/agency/${agencyAccountNumber}/contact/${contactId}`);
-        dispatch({
-            type: GET_CONTACT,
-            payload: res.data
-        })
-    } catch (error) {
 
-    }
-};
-
-
-export const deleteContacts = (contactId, agencyAccountNumber) => async dispatch => {
+export const deleteContact = (agencyAccountNumber, contactId) => async dispatch => {
     if(window.confirm("Delete Contact?")) {
         await axios.delete(`/api/agency/${agencyAccountNumber}/contact/${contactId}`);
         dispatch({

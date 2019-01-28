@@ -1,5 +1,7 @@
 package com.nathanlind.foodbankagencycontacts.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
@@ -33,10 +35,12 @@ public class Agency {
     private String agencySchedulingLogin;
     private String agencySchedulingPassword;
 
-    @OneToMany(mappedBy = "agency")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "agency")
+    @JsonIgnore
     private List<Contact> contacts = new ArrayList<>();
 
-    @OneToMany(mappedBy = "agency")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "agency")
+    @JsonIgnore
     private List<Note> notes = new ArrayList<>();
 
 
@@ -171,5 +175,21 @@ public class Agency {
 
     public void setAgencySchedulingPassword(String agencySchedulingPassword) {
         this.agencySchedulingPassword = agencySchedulingPassword;
+    }
+
+    public List<Contact> getContacts() {
+        return contacts;
+    }
+
+    public void setContacts(List<Contact> contacts) {
+        this.contacts = contacts;
+    }
+
+    public List<Note> getNotes() {
+        return notes;
+    }
+
+    public void setNotes(List<Note> notes) {
+        this.notes = notes;
     }
 }

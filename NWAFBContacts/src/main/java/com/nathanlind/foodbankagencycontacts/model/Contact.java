@@ -1,6 +1,6 @@
 package com.nathanlind.foodbankagencycontacts.model;
 
-import org.springframework.lang.NonNull;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -12,14 +12,17 @@ public class Contact {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "Contact Name is required")
+    @NotBlank(message = "Contact Name is required.")
     private String contactName;
 
+    @NotBlank(message = "Phone number is required.")
     private String contactPhoneNumber;
+    @NotBlank(message = "Email Address is required.")
     private String contactEmailAddress;
 
-    @ManyToOne
-    @NonNull
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="agency_id", updatable = false, nullable = false)
+    @JsonIgnore
     private Agency agency;
 
 
@@ -66,5 +69,17 @@ public class Contact {
 
     public void setAgency(Agency agency) {
         this.agency = agency;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Contact{" +
+                "id=" + id +
+                ", contactName='" + contactName + '\'' +
+                ", contactPhoneNumber='" + contactPhoneNumber + '\'' +
+                ", contactEmailAddress='" + contactEmailAddress + '\'' +
+                ", agency=" + agency +
+                '}';
     }
 }

@@ -47,7 +47,7 @@ public class AgencyController {
         }
 
         Agency newAgency = agencyService.createOrUpdateAgency(agency);
-        return new ResponseEntity<Agency>(agency, HttpStatus.CREATED);
+        return new ResponseEntity<Agency>(newAgency, HttpStatus.CREATED);
 
     }
 

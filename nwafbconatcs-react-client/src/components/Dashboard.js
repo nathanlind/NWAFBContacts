@@ -53,6 +53,7 @@ class Dashboard extends Component {
                             {
                                 filteredAgencies.map(agency => (
                                     <AgencyItem key={agency.id}
+                                                id={agency.agencyAccountNumber}
                                                 agency={agency}/>
                                 ))
                             }

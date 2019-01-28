@@ -4,8 +4,8 @@ import {GET_ERRORS, GET_AGENCIES, GET_AGENCY, DELETE_AGENCY} from "./types";
 
 export const createAgency = (agency, history) => async dispatch => {
     try {
-        const res = await axios.post("/api/agency", agency);
-        history.push("/dashboard")
+        await axios.post("/api/agency", agency);
+        history.push("/dashboard");
         dispatch({
             type: GET_ERRORS,
             payload: {}

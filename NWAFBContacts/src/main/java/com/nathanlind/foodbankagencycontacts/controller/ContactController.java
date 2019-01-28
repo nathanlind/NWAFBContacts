@@ -1,7 +1,9 @@
 package com.nathanlind.foodbankagencycontacts.controller;
 
 
+import com.nathanlind.foodbankagencycontacts.model.Agency;
 import com.nathanlind.foodbankagencycontacts.model.Contact;
+import com.nathanlind.foodbankagencycontacts.service.AgencyService;
 import com.nathanlind.foodbankagencycontacts.service.ContactService;
 import com.nathanlind.foodbankagencycontacts.service.ValidationErrorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,24 +15,31 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/api/agency/{agencyAccountNumber}/contact")
+@RequestMapping("/api/agency")
+@CrossOrigin
 public class ContactController {
 
     @Autowired
     private ContactService contactService;
 
     @Autowired
+    private AgencyService agencyService;
+
+    @Autowired
     private ValidationErrorService validationErrorService;
 
-    @GetMapping("/all")
-    public Iterable<Contact> getAllContacts() {
-        return contactService.findAllContacts();
+
+
+    @GetMapping("/{agencyAccountNumber}/contact/all")
+    public Iterable<Contact> getContacts(@PathVariable String agencyAccountNumber) {
+        Agency agency = agencyService.findAgencyByAccountNumber(agencyAccountNumber);
+        return contactService.findContactsByAgency(agency);
     }
 
 
-
-    @PostMapping("")
-    public ResponseEntity<?> createNewAgency(@Valid @RequestBody Contact contact, BindingResult result) {
+    @PostMapping("/{agencyAccountNumber}/contact")
+    public ResponseEntity<?> createNewContact(@Valid @RequestBody Contact contact,
+                                              BindingResult result, @PathVariable String agencyAccountNumber) {
 
         ResponseEntity<?> errorMap = validationErrorService.MapValidationService(result);
         
@@ -38,7 +47,14 @@ public class ContactController {
             return errorMap;
         }
 
-        Contact newContact = contactService.createOrUpdateContact(contact);
-        return new ResponseEntity<Contact>(contact, HttpStatus.CREATED);
+        Contact newContact = contactService.createOrUpdateContact(agencyAccountNumber, contact);
+        return new ResponseEntity<Contact>(newContact, HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("/{agencyAccountNumber}/contact/{contactId}")
+    public ResponseEntity<?> deleteContact(@PathVariable Long contactId) {
+        contactService.deleteContactById(contactId);
+
+        return new ResponseEntity<String>("Contact was deleted.", HttpStatus.OK);
     }
 }

@@ -11,6 +11,9 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import {faEdit, faTrash, faPlusSquare, faUser, faStickyNote} from "@fortawesome/free-solid-svg-icons";
 import UpdateAgency from "./components/Agency/UpdateAgency";
 import AddContact from "./components/Contact/AddContact";
+import AddNote from "./components/Note/AddNote";
+import UpdateContact from "./components/Contact/UpdateContact";
+import UpdateNote from "./components/Note/UpdateNote";
 
 
 library.add(faEdit);
@@ -30,7 +33,10 @@ class App extends Component {
                 <Route exact path="/dashboard" component={Dashboard}/>
                 <Route exact path="/addAgency" component={AddAgency}/>
                 <Route exact path="/updateAgency/:id" component={UpdateAgency}/>
-                <Route exact path="/addContact" component={AddContact}/>
+                <Route exact path="/addContact/:id" component={AddContact}/>
+                <Route exact path="/updateContact/:id" component={UpdateContact}/>
+                <Route exact path="/addNote/:id" component={AddNote}/>
+                <Route exact path="/updateNote/:id" component={UpdateNote}/>
               </div>
             </Router>
         </Provider>

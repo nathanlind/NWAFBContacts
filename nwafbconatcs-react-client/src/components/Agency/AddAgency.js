@@ -3,9 +3,6 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {createAgency} from "../../actions/agencyActions";
 import classnames from 'classnames';
-import AddContact from "../Contact/AddContact";
-import AddNote from "../Note/AddNote";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 class AddAgency extends Component {
     constructor(props) {
@@ -74,12 +71,12 @@ class AddAgency extends Component {
                 <div className="row">
                     <div className="col-md-12">
                         <div className="card bg-light shadow p-3 mb-5 bg-white rounded">
-                            <h2 className="card-header alert alert-secondary logo-font-green text-center">Add New Agency</h2>
+                            <h5 className="card-header alert alert-secondary logo-font-green text-center">Add New Agency</h5>
                             <div className="card-body">
                                 <form onSubmit={this.onSubmit}>
                                     <div className="form-row text-left">
                                         <div className="form-group col-md-5">
-                                            <label htmlFor="inputEmail4">Agency Name:</label>
+                                            <label>Agency Name:</label>
                                             <input type="text"
                                                    className={classnames("form-control",{
                                                        "is-invalid": errors.agencyName
@@ -94,7 +91,7 @@ class AddAgency extends Component {
                                             )}
                                         </div>
                                         <div className="form-group col-md-5 offset-2">
-                                            <label htmlFor="inputPassword4">Parent Organization:</label>
+                                            <label>Parent Organization:</label>
                                             <input type="text"
                                                    className="form-control"
                                                    placeholder="Parent Organization"
@@ -106,7 +103,7 @@ class AddAgency extends Component {
                                     </div>
                                     <div className="form-row text-left">
                                         <div className="form-group col-md-5">
-                                            <label htmlFor="inputAddress">Account Number:</label>
+                                            <label>Account Number:</label>
                                             <input type="text"
                                                    className={classnames("form-control",{
                                                        "is-invalid": errors.agencyAccountNumber
@@ -205,7 +202,7 @@ class AddAgency extends Component {
                                     <br/>
                                     <div className="form-row text-left">
                                         <div className="form-group col-md-5">
-                                            <label htmlFor="inputEmail4">WebStore Login:</label>
+                                            <label>WebStore Login:</label>
                                             <input type="text"
                                                    className="form-control"
                                                    placeholder="WebStore Login"
@@ -215,7 +212,7 @@ class AddAgency extends Component {
                                             />
                                         </div>
                                         <div className="form-group col-md-5 offset-2">
-                                            <label htmlFor="inputPassword4">Scheduling Login:</label>
+                                            <label>Scheduling Login:</label>
                                             <input type="text"
                                                    className="form-control"
                                                    placeholder="Scheduling Login"
@@ -227,7 +224,7 @@ class AddAgency extends Component {
                                     </div>
                                     <div className="form-row text-left">
                                         <div className="form-group col-md-5">
-                                            <label htmlFor="inputAddress">WebStore Password:</label>
+                                            <label>WebStore Password:</label>
                                             <input type="text"
                                                    className="form-control"
                                                    placeholder="WebStore Password"
@@ -237,7 +234,7 @@ class AddAgency extends Component {
                                             />
                                         </div>
                                         <div className="form-group col-md-5 offset-2">
-                                            <label htmlFor="inputPassword4">Scheduling Password:</label>
+                                            <label>Scheduling Password:</label>
                                             <input type="text"
                                                    className="form-control"
                                                    placeholder="Scheduling Password"
