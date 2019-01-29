@@ -25,17 +25,14 @@ class Dashboard extends Component {
     };
 
     render() {
-
         const {agencies} = this.props.agency;
         let filteredAgencies;
-        if (this.state.search === '') {
-            filteredAgencies = agencies;
-        } else {
+
         filteredAgencies = agencies.filter(
             (agency) => {
                 return agency.agencyAccountNumber === this.state.search;
             });
-        }
+
 
         return (
             <div className="agencies">
