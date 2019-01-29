@@ -16,6 +16,7 @@ class SearchBar extends Component {
     handleSearch(event) {
         event.preventDefault();
         this.props.onSearch(this.state.term);
+        this.setState({ term: "" })
     }
 
     render() {
@@ -25,6 +26,7 @@ class SearchBar extends Component {
                     <input type="text"
                            className="form-control"
                            placeholder="Agency Name or Account Number"
+                           value={this.state.term}
                            onChange={this.updateSearch}
                     />
                         <div className="input-group-append">
