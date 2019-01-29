@@ -5,7 +5,6 @@ import AgencyItem from "./Agency/AgencyItem";
 import { connect } from 'react-redux';
 import { getAgencies } from "../actions/agencyActions";
 import PropTypes from 'prop-types';
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 class Dashboard extends Component {
     constructor(props) {

@@ -12,13 +12,13 @@ import {getNotes} from "../../actions/noteActions";
 
 class AgencyItem extends Component {
 
-    getContactsOnLoad = agencyAccountNumber => {
-        this.props.getContacts(agencyAccountNumber);
-    };
 
-    getNotesOnLoad = agencyAccountNumber => {
-        this.props.getNotes(agencyAccountNumber);
-    };
+    componentDidMount() {
+        const {agency} = this.props;
+        this.props.getContacts(agency.agencyAccountNumber);
+        this.props.getNotes(agency.agencyAccountNumber);
+    }
+
 
     onDeleteClick = agencyAccountNumber => {
         this.props.deleteAgency(agencyAccountNumber);
@@ -70,8 +70,6 @@ class AgencyItem extends Component {
                             </div>
                         </div>
                         <div className="row">
-                            {this.getContactsOnLoad(agency.agencyAccountNumber)}
-                            {this.getNotesOnLoad(agency.agencyAccountNumber)}
                             {
                                 contacts.map(contact => (
                                     <ContactItem key={contact.id}

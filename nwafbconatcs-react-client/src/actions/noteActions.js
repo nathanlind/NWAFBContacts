@@ -27,7 +27,7 @@ export const getNotes = agencyAccountNumber => async dispatch => {
 
 export const deleteNote = (agencyAccountNumber, noteId) => async dispatch => {
     if(window.confirm("Delete Note?")) {
-        await axios.delete(`/api/agency${agencyAccountNumber}/note/${noteId}`);
+        await axios.delete(`/api/agency/${agencyAccountNumber}/note/${noteId}`);
         dispatch({
             type: DELETE_NOTE,
             payload: noteId

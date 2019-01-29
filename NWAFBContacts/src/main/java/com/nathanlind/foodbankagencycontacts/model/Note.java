@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Entity
 public class Note {
@@ -23,10 +23,7 @@ public class Note {
     private String noteBody;
 
     @JsonFormat(pattern = "MM-dd-yyyy @ hh:mm a")
-    @Column(updatable = false)
-    private Date creationDate;
-    @JsonFormat(pattern = "MM-dd-yyyy @ hh:mm a")
-    private Date modificationDate;
+    private LocalDateTime modificationDate;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="agency_id", updatable = false, nullable = false)
@@ -63,12 +60,7 @@ public class Note {
         this.noteBody = noteBody;
     }
 
-    public Date getCreationDate() {
-        return creationDate;
-    }
-
-
-    public Date getModificationDate() {
+    public LocalDateTime getModificationDate() {
         return modificationDate;
     }
 
@@ -83,12 +75,12 @@ public class Note {
 
     @PrePersist
     protected void onCreate() {
-        this.creationDate = new Date();
+        this.modificationDate = LocalDateTime.now();
     }
 
     @PreUpdate
     protected void onUpdate() {
-        this.modificationDate = new Date();
+        this.modificationDate = LocalDateTime.now();
     }
 
     @Override
@@ -97,7 +89,6 @@ public class Note {
                 "id=" + id +
                 ", noteSubject='" + noteSubject + '\'' +
                 ", noteBody='" + noteBody + '\'' +
-                ", creationDate=" + creationDate +
                 ", modificationDate=" + modificationDate +
                 ", agency=" + agency +
                 '}';

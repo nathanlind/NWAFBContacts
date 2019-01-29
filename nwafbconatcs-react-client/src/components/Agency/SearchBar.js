@@ -1,7 +1,4 @@
 import React, {Component} from 'react';
-import {getAgency} from "../../actions/agencyActions";
-import PropTypes from "prop-types";
-import {connect} from "react-redux";
 class SearchBar extends Component {
     constructor(props){
         super(props);

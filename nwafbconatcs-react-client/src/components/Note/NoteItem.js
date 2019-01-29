@@ -20,7 +20,7 @@ class NoteItem extends Component {
                     <div className="card-header mt-2 shadow">
                         <div className="row justify-content-between">
                             <h5 className="mt-1 ml-2">{note.noteSubject}</h5>
-                            <h5 className="mt-1 mr-2">Modified on: {note.modificationDate} | Created on: {note.creationDate}</h5>
+                            <p className="mt-1 mr-2">Modified: {note.modificationDate}</p>
                         </div>
                     </div>
                     <div className="card-body">

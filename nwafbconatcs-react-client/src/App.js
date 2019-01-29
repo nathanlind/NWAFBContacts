@@ -3,7 +3,7 @@ import './App.css';
 import Navbar from "./components/Layout/Navbar";
 import Dashboard from "./components/Dashboard";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import AddAgency from "./components/Agency/AddAgency";
 import { Provider } from "react-redux";
 import store from "./store";
