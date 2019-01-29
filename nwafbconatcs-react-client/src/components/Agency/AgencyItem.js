@@ -97,7 +97,7 @@ class AgencyItem extends Component {
                                 <div className="btn-group mr-n3 mb-n3 shadow " role="group">
                                     <Link to={`/updateAgency/${agency.agencyAccountNumber}`}>
                                         <button type="button"
-                                                className="btn btn-secondary"><FontAwesomeIcon icon="edit" /></button>
+                                                className="btn btn-secondary"><FontAwesomeIcon icon="edit" /> Update Agency</button>
                                     </Link>
                                     <button type="button"
                                             className="btn btn-color-red"

@@ -79,6 +79,10 @@
   background-repeat: no-repeat;
 }
 
+.row-width-wide-cards .card {
+  width: 100%;
+}
+
 textarea {
   height: 150px !important;
 }

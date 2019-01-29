@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
-import { getAgency } from "../../actions/agencyActions";
+import { getAgency, createAgency } from "../../actions/agencyActions";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import {createAgency} from "../../actions/agencyActions";
 import classnames from "classnames";
 
 
 class UpdateAgency extends Component {
     constructor(props){
         super(props);
+
         this.state={
             id: "",
             agencyName: "",

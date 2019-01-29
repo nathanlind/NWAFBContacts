@@ -1,5 +1,5 @@
 import axios from "axios";
-import {GET_ERRORS, GET_NOTES, DELETE_NOTE} from "./types";
+import {GET_ERRORS, GET_NOTE, GET_NOTES, DELETE_NOTE} from "./types";
 
 export const createNote = (agencyAccountNumber, note, history) => async dispatch => {
     try{
@@ -24,6 +24,7 @@ export const getNotes = agencyAccountNumber => async dispatch => {
         payload: res.data
     })
 };
+
 
 export const deleteNote = (agencyAccountNumber, noteId) => async dispatch => {
     if(window.confirm("Delete Note?")) {

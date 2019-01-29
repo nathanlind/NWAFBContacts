@@ -36,6 +36,13 @@ public class ContactController {
         return contactService.findContactsByAgency(agency);
     }
 
+    @GetMapping("/{agencyAccountNumber}/contact/{contactId}")
+    public ResponseEntity<?> getContactById(@PathVariable Long contactId) {
+        Contact contact= contactService.findById(contactId).orElse(null);
+
+        return new ResponseEntity<Contact>(contact, HttpStatus.OK);
+    }
+
 
     @PostMapping("/{agencyAccountNumber}/contact")
     public ResponseEntity<?> createNewContact(@Valid @RequestBody Contact contact,

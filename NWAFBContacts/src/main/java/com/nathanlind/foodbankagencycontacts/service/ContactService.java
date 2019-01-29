@@ -7,6 +7,8 @@ import com.nathanlind.foodbankagencycontacts.repository.ContactRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class ContactService {
 
@@ -23,6 +25,10 @@ public class ContactService {
         contact.setAgency(agency);
 
         return contactRepository.save(contact);
+    }
+
+    public Optional<Contact> findById(Long contactId) {
+        return contactRepository.findById(contactId);
     }
 
     public Iterable<Contact> findAllContacts() {

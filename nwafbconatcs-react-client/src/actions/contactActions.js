@@ -1,5 +1,5 @@
 import axios from "axios";
-import {GET_ERRORS, GET_CONTACTS, DELETE_CONTACT} from "./types";
+import {GET_ERRORS, GET_CONTACT, GET_CONTACTS, DELETE_CONTACT} from "./types";
 
 
 export const createContact = (agencyAccountNumber, contact, history) => async dispatch => {
@@ -25,6 +25,19 @@ export const getContacts = agencyAccountNumber => async dispatch => {
         type: GET_CONTACTS,
         payload: res.data
     })
+};
+
+
+export const getContact = (agencyAccountNumber, contactId, history) => async dispatch => {
+    try {
+        const res = await axios.get(`/api/agency/${agencyAccountNumber}/contact/${contactId}`);
+        dispatch({
+            type: GET_CONTACT,
+            payload: res.data
+        })
+    } catch (error) {
+        history.push("/dashboard");
+    }
 };
 
 

@@ -24,7 +24,7 @@ class SearchBar extends Component {
                 <div className="input-group input-group-lg shadow mb-0">
                     <input type="text"
                            className="form-control"
-                           placeholder="Agency Account Number"
+                           placeholder="Agency Name or Account Number"
                            onChange={this.updateSearch}
                     />
                         <div className="input-group-append">

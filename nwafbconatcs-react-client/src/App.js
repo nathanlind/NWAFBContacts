@@ -23,6 +23,18 @@ library.add(faStickyNote);
 library.add(faUser);
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.search = this.search.bind(this);
+    this.state = {
+      search: "*****"
+    }
+  }
+
+  search(term) {
+    this.setState( {search: term })
+  };
+
 
   render() {
     return (
@@ -30,13 +42,13 @@ class App extends Component {
             <Router>
               <div className="App">
                 <Navbar/>
-                <Route exact path="/dashboard" component={Dashboard}/>
+                <Route exact path="/dashboard" render={(props) => <Dashboard {...props} onSearch={this.search} searchTerm={this.state.search}/>}/>
                 <Route exact path="/addAgency" component={AddAgency}/>
                 <Route exact path="/updateAgency/:id" component={UpdateAgency}/>
                 <Route exact path="/addContact/:id" component={AddContact}/>
-                <Route exact path="/updateContact/:id" component={UpdateContact}/>
+                <Route exact path="/updateContact/:agencyAccountNumber/:contactId" component={UpdateContact}/>
                 <Route exact path="/addNote/:id" component={AddNote}/>
-                <Route exact path="/updateNote/:id" component={UpdateNote}/>
+                <Route exact path="/updateNote/:agencyAccountNumber/:noteId" component={UpdateNote}/>
               </div>
             </Router>
         </Provider>

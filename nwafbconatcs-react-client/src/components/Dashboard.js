@@ -7,21 +7,10 @@ import { getAgencies } from "../actions/agencyActions";
 import PropTypes from 'prop-types';
 
 class Dashboard extends Component {
-    constructor(props) {
-        super(props);
-        this.search = this.search.bind(this);
-        this.state = {
-            search: "*****"
-        };
-    }
 
     componentDidMount() {
         this.props.getAgencies();
     }
-
-    search(term) {
-        this.setState( {search: term })
-    };
 
     render() {
         const {agencies} = this.props.agency;
@@ -29,7 +18,8 @@ class Dashboard extends Component {
 
         filteredAgencies = agencies.filter(
             (agency) => {
-                return agency.agencyAccountNumber === this.state.search;
+                return (agency.agencyAccountNumber === this.props.searchTerm
+                    || agency.agencyName.toLowerCase() === this.props.searchTerm.toLowerCase());
             });
 
 
@@ -43,7 +33,7 @@ class Dashboard extends Component {
                             </h1>
                             <br/>
                             <AddNewAgencyButton/>
-                            <SearchBar onSearch={this.search}/>
+                            <SearchBar onSearch={this.props.onSearch}/>
                             <br/>
                             <hr/>
                             {

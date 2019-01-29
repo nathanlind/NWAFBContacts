@@ -15,7 +15,7 @@ class NoteItem extends Component {
         const {agency} = this.props;
 
         return (
-            <div>
+            <div className="container d-flex">
                 <div className="card text-left col-12 bg-light shadow mb-4 bg-white rounded">
                     <div className="card-header mt-2 shadow">
                         <div className="row justify-content-between">
@@ -23,7 +23,7 @@ class NoteItem extends Component {
                             <p className="mt-1 mr-2">Modified: {note.modificationDate}</p>
                         </div>
                     </div>
-                    <div className="card-body">
+                    <div className="card-body row-width-wide-cards">
                         <div className="row">
                             <div className="col-12">
                                 <p className="mb-1"><strong>Note:</strong></p>
