@@ -16,25 +16,28 @@ class SearchBar extends Component {
         this.setState({term: event.target.value})
     }
 
-    handleSearch() {
+    handleSearch(event) {
+        event.preventDefault();
         this.props.onSearch(this.state.term);
     }
 
     render() {
         return (
-            <div className="input-group input-group-lg shadow mb-0">
-                <input type="text"
-                       className="form-control"
-                       placeholder="Agency Name or Account Number"
-                       onChange={this.updateSearch}
-                />
-                    <div className="input-group-append">
-                        <button className="btn btn-color-orange"
-                                type="button"
-                                onClick={this.handleSearch}
-                                id="button-addon2">Search</button>
-                    </div>
-            </div>
+            <form onSubmit={this.handleSearch}>
+                <div className="input-group input-group-lg shadow mb-0">
+                    <input type="text"
+                           className="form-control"
+                           placeholder="Agency Name or Account Number"
+                           onChange={this.updateSearch}
+                    />
+                        <div className="input-group-append">
+                            <button className="btn btn-color-orange"
+                                    type="button"
+                                    onClick={this.handleSearch}
+                                    id="button-addon2">Search</button>
+                        </div>
+                </div>
+            </form>
         );
     }
 }
