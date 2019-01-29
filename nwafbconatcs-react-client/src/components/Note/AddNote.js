@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import classnames from "classnames";
-import {createNote} from "../../actions/noteActions";
+import { createNote } from "../../actions/noteActions";
 import PropTypes from "prop-types";
 
 class AddNote extends Component {
@@ -11,7 +11,7 @@ class AddNote extends Component {
 
         this.state ={
             noteSubject: "",
-            noteContents: "",
+            noteBody: "",
             agencyAccountNumber: id,
             errors:{}
         };
@@ -34,9 +34,10 @@ class AddNote extends Component {
         event.preventDefault();
         const newNote = {
             noteSubject: this.state.noteSubject,
-            noteContents: this.state.noteContents
+            noteBody: this.state.noteBody
         };
-        this.props.createNote(this.state.agencyAccountNumber, this.props.history);
+        console.log(newNote);
+        this.props.createNote(this.state.agencyAccountNumber, newNote, this.props.history);
     }
 
     render() {
@@ -51,27 +52,29 @@ class AddNote extends Component {
                             <h5 className="card-header alert alert-secondary logo-font-green text-center">Add Note</h5>
                             <div className="card-body">
                                 <form onSubmit={this.onSubmit}>
-                                    <div className="form-group col-md-5">
-                                        <label>Note Subject:</label>
-                                        <input type="text"
-                                               className={classnames("form-control", {
-                                                   "is-invalid":errors.summary
-                                               })}
-                                               placeholder="Note Subject"
-                                               name="noteSubject"
-                                               value={this.state.notes()}
-                                               onChange={this.onChange}
-                                        />
-                                        {errors.noteSubject && (
-                                            <div className="invalid-feedback">{errors.noteSubject}</div>
-                                        )}
+                                    <div className="form-row text-left">
+                                        <div className="form-group col-md-7">
+                                            <label>Note Subject:</label>
+                                            <input type="text"
+                                                   className={classnames("form-control", {
+                                                       "is-invalid":errors.summary
+                                                   })}
+                                                   placeholder="Note Subject"
+                                                   name="noteSubject"
+                                                   value={this.state.noteSubject}
+                                                   onChange={this.onChange}
+                                            />
+                                            {errors.noteSubject && (
+                                                <div className="invalid-feedback">{errors.noteSubject}</div>
+                                            )}
+                                        </div>
                                     </div>
                                         <textarea type="text"
-                                               className="form-control"
-                                               placeholder="Note"
-                                               name="noteContents"
-                                               value={this.state.noteContents}
-                                               onChange={this.onChange}
+                                                  className="form-control"
+                                                  placeholder="Note"
+                                                  name="noteBody"
+                                                  value={this.state.noteBody}
+                                                  onChange={this.onChange}
                                         />
                                     <div className="row justify-content-end">
                                         <input type="submit"
@@ -95,6 +98,6 @@ AddNote.propTypes = {
 
 const mapStateToProps = state => ({
     errors: state.errors
-})
+});
 
 export default connect(mapStateToProps, {createNote})(AddNote);

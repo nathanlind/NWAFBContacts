@@ -7,12 +7,17 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import ContactItem from "../Contact/ContactItem";
 import NoteItem from "../Note/NoteItem";
 import {getContacts} from "../../actions/contactActions";
+import {getNotes} from "../../actions/noteActions";
 
 
 class AgencyItem extends Component {
 
     getContactsOnLoad = agencyAccountNumber => {
         this.props.getContacts(agencyAccountNumber);
+    };
+
+    getNotesOnLoad = agencyAccountNumber => {
+        this.props.getNotes(agencyAccountNumber);
     };
 
     onDeleteClick = agencyAccountNumber => {
@@ -23,6 +28,7 @@ class AgencyItem extends Component {
 
         const {agency} = this.props;
         const {contacts} = this.props.contact;
+        const {notes} = this.props.note;
 
 
         return (
@@ -65,13 +71,19 @@ class AgencyItem extends Component {
                         </div>
                         <div className="row">
                             {this.getContactsOnLoad(agency.agencyAccountNumber)}
+                            {this.getNotesOnLoad(agency.agencyAccountNumber)}
                             {
                                 contacts.map(contact => (
                                     <ContactItem key={contact.id}
                                                  agency={agency}
                                                  contact={contact}/>))
                             }
-                            <NoteItem/>
+                            {
+                                notes.map(note => (
+                                    <NoteItem key={note.id}
+                                              agency={agency}
+                                              note={note}/>))
+                            }
                         </div>
                         <div className="row">
                             <div className="col-auto mr-auto">
@@ -105,12 +117,15 @@ class AgencyItem extends Component {
 
 AgencyItem.propTypes = {
     contact: PropTypes.object.isRequired,
+    note: PropTypes.object.isRequired,
     deleteAgency: PropTypes.func.isRequired,
-    getContacts: PropTypes.func.isRequired
+    getContacts: PropTypes.func.isRequired,
+    getNotes: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
-    contact: state.contact
+    contact: state.contact,
+    note: state.note
 });
 
-export default connect(mapStateToProps, {getContacts, deleteAgency})(AgencyItem);
+export default connect(mapStateToProps, {getContacts, getNotes, deleteAgency})(AgencyItem);

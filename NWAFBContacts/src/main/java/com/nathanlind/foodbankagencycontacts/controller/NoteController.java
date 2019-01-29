@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/api/agency/{agencyAccountNumber}/note")
+@RequestMapping("/api/agency")
 @CrossOrigin
 public class NoteController {
 

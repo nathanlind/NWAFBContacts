@@ -14,19 +14,18 @@ public class Note {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
-    private String agencyAccountNumber;
-
     @NotBlank(message = "Note subject is required.")
     private String noteSubject;
 
+    @Lob
+    @Column(name="note_body", length=16777215)
     @NotBlank(message = "Note text is required.")
-    private String noteContents;
+    private String noteBody;
 
-    @JsonFormat(pattern = "yyyy-MM-dd@HH:mm")
+    @JsonFormat(pattern = "MM-dd-yyyy @ hh:mm a")
     @Column(updatable = false)
     private Date creationDate;
-    @JsonFormat(pattern = "yyyy-MM-dd@HH:mm")
+    @JsonFormat(pattern = "MM-dd-yyyy @ hh:mm a")
     private Date modificationDate;
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -56,28 +55,21 @@ public class Note {
         this.noteSubject = noteSubject;
     }
 
-    public String getNoteContents() {
-        return noteContents;
+    public String getNoteBody() {
+        return noteBody;
     }
 
-    public void setNoteContents(String noteContents) {
-        this.noteContents = noteContents;
+    public void setNoteBody(String noteBody) {
+        this.noteBody = noteBody;
     }
 
     public Date getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(Date creationDate) {
-        this.creationDate = creationDate;
-    }
 
     public Date getModificationDate() {
         return modificationDate;
-    }
-
-    public void setModificationDate(Date modificationDate) {
-        this.modificationDate = modificationDate;
     }
 
     public Agency getAgency() {
@@ -104,7 +96,7 @@ public class Note {
         return "Note{" +
                 "id=" + id +
                 ", noteSubject='" + noteSubject + '\'' +
-                ", noteContents='" + noteContents + '\'' +
+                ", noteBody='" + noteBody + '\'' +
                 ", creationDate=" + creationDate +
                 ", modificationDate=" + modificationDate +
                 ", agency=" + agency +

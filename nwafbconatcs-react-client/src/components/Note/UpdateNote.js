@@ -15,7 +15,7 @@ class UpdateNote extends Component {
                                                       className="form-control"
                                                       placeholder="Note"
                                                       name="noteContents"
-                                                      value={this.state.noteContents}
+                                                      value={this.state.noteBody}
                                                       onChange={this.onChange}
                                             />
                                         <div className="row justify-content-end">
