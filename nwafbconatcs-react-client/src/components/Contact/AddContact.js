@@ -40,9 +40,6 @@ class AddContact extends Component {
             contactPhoneNumber: this.state.contactPhoneNumber,
             contactEmailAddress: this.state.contactEmailAddress,
         };
-
-        console.log(newContact);
-        console.log(this.state.agencyAccountNumber);
         this.props.createContact(this.state.agencyAccountNumber, newContact, this.props.history);
     }
 

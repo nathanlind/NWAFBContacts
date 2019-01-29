@@ -1,8 +1,8 @@
 import {DELETE_NOTE, GET_NOTES, GET_NOTE} from "../actions/types";
 
 const initialState = {
-    note: [],
-    notes: {}
+    notes: [],
+    note: {}
 };
 
 export default function(state = initialState, action) {
