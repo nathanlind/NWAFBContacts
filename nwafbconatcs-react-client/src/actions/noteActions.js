@@ -25,6 +25,18 @@ export const getNotes = agencyAccountNumber => async dispatch => {
     })
 };
 
+export const getNote = (agencyAccountNumber, noteId, history) => async dispatch => {
+    try {
+        const res = await axios.get(`/api/agency/${agencyAccountNumber}/note/${noteId}`);
+        dispatch({
+            type: GET_NOTE,
+            payload: res.data
+        })
+    } catch (error) {
+        history.push("/dashboard");
+    }
+};
+
 
 export const deleteNote = (agencyAccountNumber, noteId) => async dispatch => {
     if(window.confirm("Delete Note?")) {
