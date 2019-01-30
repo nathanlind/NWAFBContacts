@@ -7,6 +7,8 @@ import com.nathanlind.foodbankagencycontacts.repository.NoteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class NoteService {
 
@@ -23,6 +25,10 @@ public class NoteService {
         note.setAgency(agency);
 
         return noteRepository.save(note);
+    }
+
+    public Optional<Note> findById(Long noteId) {
+        return noteRepository.findById(noteId);
     }
 
     public Iterable<Note> findAllNotes() {

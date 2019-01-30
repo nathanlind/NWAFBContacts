@@ -35,6 +35,13 @@ public class NoteController {
         return noteService.findNotesByAgency(agency);
     }
 
+    @GetMapping("/{agencyAccountNumber}/note/{noteId}")
+    public ResponseEntity<?> getNoteById(@PathVariable Long noteId) {
+        Note note = noteService.findById(noteId).orElse(null);
+
+        return new ResponseEntity<Note>(note, HttpStatus.OK);
+    }
+
     @PostMapping("/{agencyAccountNumber}/note")
     public ResponseEntity<?> createNewNote(@Valid @RequestBody Note note,
                                            BindingResult result, @PathVariable String agencyAccountNumber) {
