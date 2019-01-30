@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Link } from 'react-router-dom';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
@@ -30,8 +31,10 @@ class NoteItem extends Component {
                                 <p>{note.noteBody}</p>
                             </div>
                             <div className="btn-group mr-1 mb-1 mt-3" role="group">
+                                <Link to={`/updateNote/${agency.agencyAccountNumber}/${note.id}`}>
                                 <button type="button"
                                         className="btn btn-secondary"><FontAwesomeIcon icon="edit" /></button>
+                                </Link>
                                 <button type="button"
                                         className="btn btn-color-red"
                                         onClick={this.onDeleteClick.bind(this, agency.agencyAccountNumber, note.id)}

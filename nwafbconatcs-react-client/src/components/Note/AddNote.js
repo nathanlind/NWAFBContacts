@@ -57,7 +57,7 @@ class AddNote extends Component {
                                             <label>Note Subject:</label>
                                             <input type="text"
                                                    className={classnames("form-control", {
-                                                       "is-invalid":errors.summary
+                                                       "is-invalid":errors.noteSubject
                                                    })}
                                                    placeholder="Note Subject"
                                                    name="noteSubject"
@@ -69,13 +69,18 @@ class AddNote extends Component {
                                             )}
                                         </div>
                                     </div>
-                                        <textarea type="text"
-                                                  className="form-control"
-                                                  placeholder="Note"
-                                                  name="noteBody"
-                                                  value={this.state.noteBody}
-                                                  onChange={this.onChange}
-                                        />
+                                    <textarea type="text"
+                                              className={classnames("form-control", {
+                                                  "is-invalid":errors.noteBody
+                                              })}
+                                              placeholder="Note"
+                                              name="noteBody"
+                                              value={this.state.noteBody}
+                                              onChange={this.onChange}
+                                    />
+                                    {errors.noteBody && (
+                                        <div className="invalid-feedback">{errors.noteBody}</div>
+                                    )}
                                     <div className="row justify-content-end">
                                         <input type="submit"
                                                className="row btn btn-color-orange btn-lg shadow mr-3 mt-4 px-5"

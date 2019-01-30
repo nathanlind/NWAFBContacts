@@ -60,7 +60,7 @@ class AddContact extends Component {
                                             <label>Contact Name:</label>
                                             <input type="text"
                                                    className={classnames("form-control", {
-                                                       "is-invalid":errors.summary
+                                                       "is-invalid":errors.contactName
                                                    })}
                                                    placeholder="Contact Name"
                                                    name="contactName"
@@ -75,7 +75,7 @@ class AddContact extends Component {
                                             <label>Phone Number:</label>
                                             <input type="text"
                                                    className={classnames("form-control", {
-                                                       "is-invalid":errors.summary
+                                                       "is-invalid":errors.contactPhoneNumber
                                                    })}
                                                    placeholder="(###)###-####"
                                                    name="contactPhoneNumber"
@@ -92,7 +92,7 @@ class AddContact extends Component {
                                             <label>Email Address:</label>
                                             <input type="text"
                                                    className={classnames("form-control", {
-                                                       "is-invalid":errors.summary
+                                                       "is-invalid":errors.contactEmailAddress
                                                    })}
                                                    placeholder="example@email.com"
                                                    name="contactEmailAddress"

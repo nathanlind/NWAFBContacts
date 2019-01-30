@@ -24,7 +24,6 @@ class AddAgency extends Component {
             agencySchedulingLogin: "",
             agencySchedulingPassword: "",
             errors:{},
-            contacts: []
         };
 
         this.onChange = this.onChange.bind(this);

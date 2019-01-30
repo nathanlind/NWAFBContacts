@@ -29,7 +29,7 @@ class ContactItem extends Component {
                                 <p className="mb-1"><strong>Phone Number:</strong></p>
                                 <p className="mb-1">{contact.contactPhoneNumber}</p>
                             </div>
-                            <div className="col-3">
+                            <div className="col-4">
                                 <p className="mb-1"><strong>Email Address:</strong></p>
                                 <p className="mb-1">{contact.contactEmailAddress}</p>
                             </div>
