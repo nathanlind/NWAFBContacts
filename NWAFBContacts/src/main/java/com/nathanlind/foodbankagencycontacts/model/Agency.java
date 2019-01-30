@@ -15,6 +15,7 @@ public class Agency {
     private Long id;
 
     @NotBlank(message = "Agency Name is required.")
+    @Column(unique = true)
     private String agencyName;
 
     @NotBlank(message = "Account Number is required.")

@@ -3,6 +3,7 @@ import { getContact, createContact } from "../../actions/contactActions";
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import classnames from "classnames";
+import NumberFormat from "react-number-format";
 
 class UpdateContact extends Component {
     constructor(props) {
@@ -91,11 +92,13 @@ class UpdateContact extends Component {
                                         </div>
                                         <div className="form-group col-md-5 offset-2">
                                             <label>Phone Number:</label>
-                                            <input type="text"
+                                            <NumberFormat type="text"
                                                    className={classnames("form-control", {
                                                        "is-invalid":errors.contactPhoneNumber
                                                    })}
-                                                   placeholder="(###)###-####"
+                                                   format="(###) ###-####"
+                                                   mask="_"
+                                                   placeholder="(###) ###-####"
                                                    name="contactPhoneNumber"
                                                    value={this.state.contactPhoneNumber}
                                                    onChange={this.onChange}
