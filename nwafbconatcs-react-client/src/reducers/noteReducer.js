@@ -15,7 +15,7 @@ export default function(state = initialState, action) {
         case GET_NOTE:
             return {
                 ...state,
-                notes: action.payload
+                note: action.payload
             };
         case DELETE_NOTE:
             return {

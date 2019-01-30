@@ -7,12 +7,13 @@ import classnames from 'classnames';
 class UpdateNote extends Component {
     constructor(props) {
         super(props);
+        const { agencyAccountNumber } = this.props.match.params;
 
         this.state= {
             id: "",
             noteSubject: "",
             noteBody: "",
-            modificationDate: "",
+            agencyAccountNumber: agencyAccountNumber,
             errors: {}
         };
 
@@ -28,21 +29,21 @@ class UpdateNote extends Component {
         const {
             id,
             noteSubject,
-            noteBody,
-            modificationDate
+            noteBody
         } = nextProps.note;
 
         this.setState({
             id,
             noteSubject,
-            noteBody,
-            modificationDate
+            noteBody
         });
     }
 
     componentDidMount() {
-        const { agencyAccountNumber, noteId } = this.props.match.params;
-        this.props.getNote(agencyAccountNumber, noteId, this.props.history);
+        const { noteId } = this.props.match.params;
+        this.props.getNote(this.state.agencyAccountNumber, noteId, this.props.history);
+        console.log(this.state.agencyAccountNumber);
+        console.log(noteId);
     }
 
     onChange(event) {
@@ -51,14 +52,12 @@ class UpdateNote extends Component {
 
     onSubmit(event) {
         event.preventDefault();
-        const { agencyAccountNumber } = this.props.match.params;
         const updateNote = {
             id: this.state.id,
             noteSubject: this.state.noteSubject,
-            noteBody: this.state.noteBody,
-            modificationDate: this.state.modificationDate
+            noteBody: this.state.noteBody
         };
-        this.props.createNote(agencyAccountNumber, updateNote, this.props.history);
+        this.props.createNote(this.state.agencyAccountNumber, updateNote, this.props.history);
     }
 
 
@@ -70,7 +69,7 @@ class UpdateNote extends Component {
                 <div className="row">
                     <div className="col-md-12">
                         <div className="card bg-light shadow p-3 mt-3 mb-5 bg-white rounded mx-auto">
-                            <h5 className="card-header alert alert-secondary logo-font-green text-center">Add Note</h5>
+                            <h5 className="card-header alert alert-secondary logo-font-green text-center">Update Note</h5>
                             <div className="card-body">
                                 <form onSubmit={this.onSubmit}>
                                     <div className="form-row text-left">
@@ -117,12 +116,11 @@ class UpdateNote extends Component {
     }
 }
 
-UpdateNote.PropTypes = {
-
+UpdateNote.propTypes = {
     note: PropTypes.object.isRequired,
     errors: PropTypes.object.isRequired,
     getNote: PropTypes.func.isRequired,
-    createContact: PropTypes.func.isRequired
+    createNote: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -130,4 +128,4 @@ const mapStateToProps = state => ({
     errors: state.errors
 });
 
-export default connect(mapStateToProps, { getNote, createNote })(UpdateNote);
+export default connect(mapStateToProps, {getNote, createNote})(UpdateNote);

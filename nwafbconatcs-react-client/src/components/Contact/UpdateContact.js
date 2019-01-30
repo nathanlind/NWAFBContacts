@@ -137,8 +137,7 @@ class UpdateContact extends Component {
     }
 }
 
-UpdateContact.propsTypes = {
-
+UpdateContact.propTypes = {
     contact: PropTypes.object.isRequired,
     errors: PropTypes.object.isRequired,
     getContact: PropTypes.func.isRequired,
