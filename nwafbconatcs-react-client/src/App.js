@@ -27,7 +27,7 @@ class App extends Component {
     super(props);
     this.search = this.search.bind(this);
     this.state = {
-      search: "*****"
+      search: ""
     }
   }
 

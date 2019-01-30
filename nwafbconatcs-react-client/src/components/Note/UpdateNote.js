@@ -42,8 +42,6 @@ class UpdateNote extends Component {
     componentDidMount() {
         const { noteId } = this.props.match.params;
         this.props.getNote(this.state.agencyAccountNumber, noteId, this.props.history);
-        console.log(this.state.agencyAccountNumber);
-        console.log(noteId);
     }
 
     onChange(event) {
