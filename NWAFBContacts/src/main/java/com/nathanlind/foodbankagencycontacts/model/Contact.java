@@ -3,6 +3,7 @@ package com.nathanlind.foodbankagencycontacts.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -17,6 +18,8 @@ public class Contact {
 
     @NotBlank(message = "Phone number is required.")
     private String contactPhoneNumber;
+
+    @Email(message = "Enter a valid email address.")
     @NotBlank(message = "Email Address is required.")
     private String contactEmailAddress;
 
