@@ -21,23 +21,25 @@ public class ContactService {
 
     public Contact createOrUpdateContact(String agencyAccountNumber, Contact contact) {
         Agency agency = agencyRepository.findByAgencyAccountNumber(agencyAccountNumber);
-
         contact.setAgency(agency);
-
         return contactRepository.save(contact);
     }
+
 
     public Optional<Contact> findById(Long contactId) {
         return contactRepository.findById(contactId);
     }
 
+
     public Iterable<Contact> findAllContacts() {
         return contactRepository.findAll();
     }
 
+
     public Iterable<Contact> findContactsByAgency(Agency agency) {
         return contactRepository.findByAgencyOrderByContactNameAsc(agency);
     }
+
 
     public void deleteContactById(Long contactId) {
         contactRepository.deleteById(contactId);

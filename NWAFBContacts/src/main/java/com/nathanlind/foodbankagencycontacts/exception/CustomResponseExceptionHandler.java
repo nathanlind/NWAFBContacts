@@ -12,8 +12,16 @@ import org.springframework.web.context.request.WebRequest;
 public class CustomResponseExceptionHandler {
 
     @ExceptionHandler
-    public final ResponseEntity<Object> handleAgencyException(AgencyAccountNumberException ex, WebRequest request) {
-        AgencyAccountNumberExceptionResponse exceptionResponse = new AgencyAccountNumberExceptionResponse(ex.getMessage());
-        return new ResponseEntity(exceptionResponse, HttpStatus.BAD_REQUEST);
+    public final ResponseEntity<Object> handleAgencyAccountNumberException(AgencyAccountNumberException ex, WebRequest request) {
+        AgencyAccountNumberExceptionResponse agencyAccountNumberExceptionResponse
+                = new AgencyAccountNumberExceptionResponse(ex.getMessage());
+        return new ResponseEntity(agencyAccountNumberExceptionResponse, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler
+    public final ResponseEntity<Object> handleAgencyAccountNameException(AgencyNameException ex, WebRequest request) {
+        AgencyNameExceptionResponse agencyNameExceptionResponse
+                = new AgencyNameExceptionResponse(ex.getMessage());
+        return new ResponseEntity(agencyNameExceptionResponse, HttpStatus.BAD_REQUEST);
     }
 }

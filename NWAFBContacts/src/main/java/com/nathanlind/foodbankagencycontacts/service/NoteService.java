@@ -21,23 +21,25 @@ public class NoteService {
 
     public Note createOrUpdateNote(String agencyAccountNumber, Note note) {
         Agency agency = agencyRepository.findByAgencyAccountNumber(agencyAccountNumber);
-
         note.setAgency(agency);
-
         return noteRepository.save(note);
     }
+
 
     public Optional<Note> findById(Long noteId) {
         return noteRepository.findById(noteId);
     }
 
+
     public Iterable<Note> findAllNotes() {
         return noteRepository.findAll();
     }
 
+
     public Iterable<Note> findNotesByAgency(Agency agency) {
         return noteRepository.findByAgencyOrderByModificationDateDesc(agency);
     }
+
 
     public void deleteNoteById(Long noteId) {
         noteRepository.deleteById(noteId);
