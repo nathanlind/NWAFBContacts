@@ -36,7 +36,7 @@ public class ContactService {
     }
 
     public Iterable<Contact> findContactsByAgency(Agency agency) {
-        return contactRepository.findByAgency(agency);
+        return contactRepository.findByAgencyOrderByContactNameAsc(agency);
     }
 
     public void deleteContactById(Long contactId) {

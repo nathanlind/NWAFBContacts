@@ -36,7 +36,7 @@ public class NoteService {
     }
 
     public Iterable<Note> findNotesByAgency(Agency agency) {
-        return noteRepository.findByAgency(agency);
+        return noteRepository.findByAgencyOrderByModificationDateDesc(agency);
     }
 
     public void deleteNoteById(Long noteId) {

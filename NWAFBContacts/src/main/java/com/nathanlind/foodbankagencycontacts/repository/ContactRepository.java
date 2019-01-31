@@ -10,6 +10,6 @@ import java.util.List;
 @Repository
 public interface ContactRepository extends CrudRepository<Contact, Long> {
 
-    List<Contact> findByAgency(Agency agency);
+    List<Contact> findByAgencyOrderByContactNameAsc(Agency agency);
 
 }

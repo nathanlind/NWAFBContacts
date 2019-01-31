@@ -10,6 +10,6 @@ import java.util.List;
 @Repository
 public interface NoteRepository extends CrudRepository<Note, Long> {
 
-    List<Note> findByAgency(Agency agency);
+    List<Note> findByAgencyOrderByModificationDateDesc(Agency agency);
 
 }
