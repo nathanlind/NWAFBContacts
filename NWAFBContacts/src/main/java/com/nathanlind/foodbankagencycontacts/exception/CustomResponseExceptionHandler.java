@@ -24,4 +24,11 @@ public class CustomResponseExceptionHandler {
                 = new AgencyNameExceptionResponse(ex.getMessage());
         return new ResponseEntity(agencyNameExceptionResponse, HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler
+    public final ResponseEntity<Object> handleUserNameException(UserNameException ex, WebRequest request) {
+        UserNameExceptionResponse userNameExceptionResponse
+                = new UserNameExceptionResponse(ex.getMessage());
+        return new ResponseEntity(userNameExceptionResponse, HttpStatus.BAD_REQUEST);
+    }
 }

@@ -1,5 +1,6 @@
 package com.nathanlind.foodbankagencycontacts.service;
 
+import com.nathanlind.foodbankagencycontacts.exception.UserNameException;
 import com.nathanlind.foodbankagencycontacts.model.User;
 import com.nathanlind.foodbankagencycontacts.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,13 +18,15 @@ public class UserService {
 
 
     public User saveUser (User newUser) {
-        newUser.setPassword(bCryptPasswordEncoder.encode(newUser.getPassword()));
 
-        //Username has to be unique (Exception)
-
-        //make sure that password and confirmPassword match
-        //We don't persist or show the confirmPassword
-        return userRepository.save(newUser);
+        try {
+            newUser.setPassword(bCryptPasswordEncoder.encode(newUser.getPassword()));
+            newUser.setUsername(newUser.getUsername());
+            newUser.setConfirmPassword("");
+            return userRepository.save(newUser);
+        } catch (Exception e){
+            throw new UserNameException("Username '" + newUser.getUsername() + "' already exists.");
+        }
     }
 
 
