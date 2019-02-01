@@ -29,14 +29,14 @@ export const login = loginRequest => async dispatch => {
         const { token } = res.data;
         // store token in localStorage
         localStorage.setItem("jwtToken", token);
-        // set our token in header ***
+        // set the token in header ***
         setJWTToken(token);
         // decode token on React
-        const decoded = jwt_decode(token);
+        const decoded_jwtToken = jwt_decode(token);
         // dispatch to our securityReducer
         dispatch({
             type: SET_CURRENT_USER,
-            payload: decoded
+            payload: decoded_jwtToken
         });
     } catch (error) {
         dispatch({
@@ -44,4 +44,13 @@ export const login = loginRequest => async dispatch => {
             payload: error.response.data
         })
     }
+};
+
+export const logout = () => dispatch => {
+    localStorage.removeItem("jwtToken");
+    setJWTToken(false)
+    dispatch({
+        type: SET_CURRENT_USER,
+        payload: {}
+    })
 };

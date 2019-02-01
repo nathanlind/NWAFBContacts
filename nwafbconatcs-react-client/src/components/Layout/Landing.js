@@ -16,12 +16,14 @@ class Landing extends Component {
                                     Create a new account or log in to an existing account
                                 </h3>
                                 <hr/>
-                                <Link to="/register" className="btn btn-lg btn-color-green shadow m-1">
-                                    Sign Up
-                                </Link>
-                                <Link to="/login" className="btn btn-lg btn-color-orange shadow m-1">
-                                    Login
-                                </Link>
+                                <div className="btn-group-lg btn-group-vertical col-md-4">
+                                    <Link to="/register" className="btn btn-lg btn-color-green shadow px-5 m-1">
+                                        Sign Up
+                                    </Link>
+                                    <Link to="/login" className="btn btn-lg btn-color-orange shadow px-5 m-1">
+                                        Login
+                                    </Link>
+                                </div>
                             </div>
                         </div>
                     </div>
