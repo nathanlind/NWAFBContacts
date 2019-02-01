@@ -1,13 +1,16 @@
 import React, {Component} from 'react';
+import { Link } from 'react-router-dom';
 
 class Navbar extends Component {
     render() {
         return (
             <nav className="navbar navbar-expand-sm navbar-dark navbar-color-dark mb-4">
                 <div className="container">
-                    <div className="navbar-brand logo-font-orange">
-                        NWA<span className="navbar-brand logo-font-green">FB</span>
-                    </div>
+                    <Link to="/">
+                        <div className="navbar-brand logo-font-orange">
+                            NWA<span className="navbar-brand logo-font-green">FB</span>
+                        </div>
+                    </Link>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-nav">
                         <span className="navbar-toggler-icon"/>
                     </button>
@@ -15,21 +18,21 @@ class Navbar extends Component {
                     <div className="collapse navbar-collapse" id="mobile-nav">
                         <ul className="navbar-nav mr-auto">
                             <li className="nav-item">
-                                <a className="nav-link" href="/dashboard">
+                                <Link className="nav-link" to="/dashboard">
                                     Dashboard
-                                </a>
+                                </Link>
                             </li>
                         </ul>
                         <ul className="navbar-nav ml-auto">
                             <li className="nav-item">
-                                <a className="nav-link " href="/dashboard">
+                                <Link className="nav-link" to="/register">
                                     Sign Up
-                                </a>
+                                </Link>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="/dashboard">
+                                <Link className="nav-link" to="/login">
                                     Login
-                                </a>
+                                </Link>
                             </li>
                         </ul>
                     </div>

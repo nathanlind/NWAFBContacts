@@ -14,7 +14,9 @@ import AddContact from "./components/Contact/AddContact";
 import AddNote from "./components/Note/AddNote";
 import UpdateContact from "./components/Contact/UpdateContact";
 import UpdateNote from "./components/Note/UpdateNote";
-
+import Landing from "./components/Layout/Landing";
+import Register from "./components/UserManagement/Register";
+import Login from "./components/UserManagement/Login";
 
 library.add(faEdit);
 library.add(faTrash);
@@ -42,6 +44,18 @@ class App extends Component {
             <Router>
               <div className="App">
                 <Navbar/>
+                {
+                  //Public Routes
+                }
+
+                <Route exact path="/" component={Landing}/>
+                <Route exact path="/register" component={Register}/>
+                <Route exact path="/login" component={Login}/>
+
+
+                {
+                  //Private Routes
+                }
                 <Route exact path="/dashboard" render={(props) => <Dashboard {...props} onSearch={this.search} searchTerm={this.state.search}/>}/>
                 <Route exact path="/addAgency" component={AddAgency}/>
                 <Route exact path="/updateAgency/:id" component={UpdateAgency}/>
