@@ -25,7 +25,7 @@ import javax.validation.Valid;
 import static com.nathanlind.foodbankagencycontacts.security.SecurityConstants.TOKEN_PREFIX;
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/api/user")
 public class UserController {
 
     @Autowired
