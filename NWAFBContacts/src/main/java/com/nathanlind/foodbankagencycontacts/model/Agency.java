@@ -44,6 +44,11 @@ public class Agency {
     @JsonIgnore
     private List<Note> notes = new ArrayList<>();
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
+    private User user;
+
+
 
     private Agency() {
 
@@ -192,5 +197,13 @@ public class Agency {
 
     public void setNotes(List<Note> notes) {
         this.notes = notes;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

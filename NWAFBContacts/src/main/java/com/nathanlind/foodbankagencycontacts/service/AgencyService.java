@@ -3,7 +3,9 @@ package com.nathanlind.foodbankagencycontacts.service;
 import com.nathanlind.foodbankagencycontacts.exception.AgencyAccountNumberException;
 import com.nathanlind.foodbankagencycontacts.exception.AgencyNameException;
 import com.nathanlind.foodbankagencycontacts.model.Agency;
+import com.nathanlind.foodbankagencycontacts.model.User;
 import com.nathanlind.foodbankagencycontacts.repository.AgencyRepository;
+import com.nathanlind.foodbankagencycontacts.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,9 +15,17 @@ public class AgencyService {
     @Autowired
     private AgencyRepository agencyRepository;
 
+    @Autowired
+    private UserRepository userRepository;
 
-    public Agency createOrUpdateAgency(Agency agency) {
+
+    public Agency createOrUpdateAgency(Agency agency, String username) {
         try {
+
+            User user = userRepository.findByUsername(username);
+
+            agency.setUser(user);
+
             agency.setAgencyAccountNumber(agency.getAgencyAccountNumber());
             agency.setAgencyName(agency.getAgencyName());
             return agencyRepository.save(agency);

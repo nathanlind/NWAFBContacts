@@ -10,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.security.Principal;
 
 @RestController
 @CrossOrigin
@@ -38,7 +39,7 @@ public class AgencyController {
 
 
     @PostMapping("")
-    public ResponseEntity<?> createNewAgency(@Valid @RequestBody Agency agency, BindingResult result) {
+    public ResponseEntity<?> createNewAgency(@Valid @RequestBody Agency agency, BindingResult result, Principal principal) {
 
         ResponseEntity<?> errorMap = validationErrorService.MapValidationService(result);
 
@@ -46,7 +47,7 @@ public class AgencyController {
             return errorMap;
         }
 
-        Agency newAgency = agencyService.createOrUpdateAgency(agency);
+        Agency newAgency = agencyService.createOrUpdateAgency(agency, principal.getName());
         return new ResponseEntity<Agency>(newAgency, HttpStatus.CREATED);
 
     }
