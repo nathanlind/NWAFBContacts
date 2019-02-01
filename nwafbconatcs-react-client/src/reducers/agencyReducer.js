@@ -20,9 +20,7 @@ export default function(state = initialState, action) {
         case DELETE_AGENCY:
             return {
                 ...state,
-                agencies: state.agencies.filter(
-                    agency => agency.agencyAccountNumber !== action.payload
-                )
+                agency: action.payload
             };
         default:
             return state;

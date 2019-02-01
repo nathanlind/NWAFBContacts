@@ -3,25 +3,18 @@ import SearchBar from "./Agency/SearchBar";
 import AddNewAgencyButton from "./Agency/AddNewAgencyButton";
 import AgencyItem from "./Agency/AgencyItem";
 import { connect } from 'react-redux';
-import { getAgencies } from "../actions/agencyActions";
 import PropTypes from 'prop-types';
 
 class Dashboard extends Component {
 
-    componentDidMount() {
-        this.props.getAgencies();
-    }
-
     render() {
-        const {agencies} = this.props.agency;
-        let filteredAgencies;
-
-        filteredAgencies = agencies.filter(
-            (agency) => {
-                return (agency.agencyAccountNumber === this.props.searchTerm
-                    || agency.agencyName.toLowerCase() === this.props.searchTerm.toLowerCase());
-            });
-
+        const {agency} = this.props.agency;
+        let agencyDisplay;
+        if(agency.agencyAccountNumber) {
+            agencyDisplay = <AgencyItem key={agency.id} id={agency.agencyAccountNumber} agency={agency}/>
+        } else {
+            agencyDisplay = ""
+        }
 
         return (
             <div className="agencies">
@@ -33,16 +26,10 @@ class Dashboard extends Component {
                             </h1>
                             <br/>
                             <AddNewAgencyButton/>
-                            <SearchBar onSearch={this.props.onSearch}/>
+                            <SearchBar/>
                             <br/>
                             <hr/>
-                            {
-                                filteredAgencies.map(agency => (
-                                    <AgencyItem key={agency.id}
-                                                id={agency.agencyAccountNumber}
-                                                agency={agency}/>
-                                ))
-                            }
+                            {agencyDisplay}
                         </div>
                     </div>
                 </div>
@@ -52,12 +39,11 @@ class Dashboard extends Component {
 }
 
 Dashboard.propTypes = {
-    agency: PropTypes.object.isRequired,
-    getAgencies: PropTypes.func.isRequired
+    agency: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
     agency: state.agency
 });
 
-export default connect(mapStateToProps, { getAgencies })(Dashboard);
+export default connect(mapStateToProps)(Dashboard);

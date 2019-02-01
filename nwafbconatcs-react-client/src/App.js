@@ -49,17 +49,6 @@ if(jwtToken){
 
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.search = this.search.bind(this);
-    this.state = {
-      search: ""
-    }
-  }
-
-  search(term) {
-    this.setState( {search: term })
-  };
 
   render() {
     return (
@@ -77,7 +66,7 @@ class App extends Component {
               //Private Routes
             }
             <Switch>
-              <SecureRoute exact path="/dashboard" component={Dashboard} onSearch={this.search} searchTerm={this.state.search}/>
+              <SecureRoute exact path="/dashboard" component={Dashboard}/>
 
               <SecureRoute exact path="/addAgency" component={AddAgency}/>
               <SecureRoute exact path="/updateAgency/:id" component={UpdateAgency}/>

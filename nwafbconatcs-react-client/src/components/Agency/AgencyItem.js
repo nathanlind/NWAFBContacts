@@ -21,7 +21,7 @@ class AgencyItem extends Component {
 
 
     onDeleteClick = agencyAccountNumber => {
-        this.props.deleteAgency(agencyAccountNumber);
+        this.props.deleteAgency(agencyAccountNumber, this.props.history);
     };
 
     render() {

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {createAgency} from "../../actions/agencyActions";
+import {getAgency} from "../../actions/agencyActions";
 import classnames from 'classnames';
 
 class AddAgency extends Component {
@@ -59,7 +60,7 @@ class AddAgency extends Component {
             agencySchedulingLogin: this.state.agencySchedulingLogin,
             agencySchedulingPassword: this.state.agencySchedulingPassword,
         };
-        this.props.createAgency(newAgency, this.props.history);
+        this.props.createAgency(newAgency, this.state.agencyAccountNumber, this.props.history);
     }
 
     render() {
@@ -260,6 +261,7 @@ class AddAgency extends Component {
 
 AddAgency.propTypes = {
     createAgency: PropTypes.func.isRequired,
+    getAgency: PropTypes.func.isRequired,
     errors: PropTypes.object.isRequired
 };
 
@@ -267,4 +269,4 @@ const mapStateToProps = state => ({
     errors: state.errors
 });
 
-export default connect(mapStateToProps, { createAgency })(AddAgency);
+export default connect(mapStateToProps, { createAgency, getAgency })(AddAgency);
