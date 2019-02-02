@@ -11,11 +11,15 @@
     <groupId>com.nathanlind</groupId>
     <artifactId>foodbankagencycontacts</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
     <name>NWAFBContacts</name>
     <description>Food Bank Agency Contacts</description>
 
     <properties>
-        <java.version>1.8</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>8</java.version>
     </properties>
 
     <dependencies>
@@ -46,6 +50,7 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
+            <version>6.0.14.Final</version>
         </dependency>
         <dependency>
             <groupId>javax.validation</groupId>

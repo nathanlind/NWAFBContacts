@@ -14,6 +14,7 @@ class NoteItem extends Component {
     render() {
         const {note} = this.props;
         const {agency} = this.props;
+        let date = new Date(note.modificationDate);
 
         return (
             <div className="container d-flex">
@@ -21,7 +22,7 @@ class NoteItem extends Component {
                     <div className="card-header mt-2 shadow">
                         <div className="row justify-content-between">
                             <h5 className="mt-1 ml-2">{note.noteSubject}</h5>
-                            <h6 className="mt-1 mr-2">{note.modificationDate}</h6>
+                            <h6 className="mt-1 mr-2">{date.toLocaleString()}</h6>
                         </div>
                     </div>
                     <div className="card-body row-width-wide-cards">
