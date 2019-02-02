@@ -60,7 +60,7 @@ class AddAgency extends Component {
             agencySchedulingLogin: this.state.agencySchedulingLogin,
             agencySchedulingPassword: this.state.agencySchedulingPassword,
         };
-        this.props.createAgency(newAgency, this.state.agencyAccountNumber, this.props.history);
+        this.props.createAgency(newAgency, this.props.history);
     }
 
     render() {

@@ -1,14 +1,13 @@
 import axios from "axios";
-import {GET_ERRORS, GET_AGENCIES, GET_AGENCY, DELETE_AGENCY} from "./types";
+import {GET_ERRORS, CREATE_AGENCY, GET_AGENCIES, GET_AGENCY, DELETE_AGENCY} from "./types";
 
 
-export const createAgency = (agency, agencyAccountNumber, history) => async dispatch => {
+export const createAgency = (agency, history) => async dispatch => {
     try {
-        await axios.post("/api/agency", agency);
-        const res = await axios.get(`/api/agency/${agencyAccountNumber}`);
+        const res = await axios.post("/api/agency", agency);
         history.push("/dashboard");
         dispatch({
-            type: GET_AGENCY,
+            type: CREATE_AGENCY,
             payload: res.data
         });
         dispatch({

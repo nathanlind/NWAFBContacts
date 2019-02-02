@@ -1,4 +1,4 @@
-import {DELETE_AGENCY, GET_AGENCIES, GET_AGENCY} from "../actions/types";
+import {CREATE_AGENCY, DELETE_AGENCY, GET_AGENCIES, GET_AGENCY} from "../actions/types";
 
 const initialState = {
     agencies: [],
@@ -7,6 +7,11 @@ const initialState = {
 
 export default function(state = initialState, action) {
     switch(action.type) {
+        case CREATE_AGENCY:
+            return {
+                ...state,
+                agency: action.payload
+            };
         case GET_AGENCIES:
             return {
                 ...state,
