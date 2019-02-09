@@ -3,7 +3,7 @@ import {GET_ERRORS, GET_NOTE, GET_NOTES, DELETE_NOTE} from "./types";
 
 export const createNote = (agencyAccountNumber, note, history) => async dispatch => {
     try{
-        await axios.post(`/api/agency/${agencyAccountNumber}/note`, note);
+        await axios.post(`http://Nwafbcontacts-env.z5bpt3xuzs.us-east-2.elasticbeanstalk.com/api/agency/${agencyAccountNumber}/note`, note);
         history.push("/dashboard");
         dispatch({
             type: GET_ERRORS,
@@ -18,7 +18,7 @@ export const createNote = (agencyAccountNumber, note, history) => async dispatch
 };
 
 export const getNotes = agencyAccountNumber => async dispatch => {
-    const res = await axios.get(`/api/agency/${agencyAccountNumber}/note/all`);
+    const res = await axios.get(`http://Nwafbcontacts-env.z5bpt3xuzs.us-east-2.elasticbeanstalk.com/api/agency/${agencyAccountNumber}/note/all`);
     dispatch({
         type: GET_NOTES,
         payload: res.data
@@ -27,7 +27,7 @@ export const getNotes = agencyAccountNumber => async dispatch => {
 
 export const getNote = (agencyAccountNumber, noteId, history) => async dispatch => {
     try {
-        const res = await axios.get(`/api/agency/${agencyAccountNumber}/note/${noteId}`);
+        const res = await axios.get(`http://Nwafbcontacts-env.z5bpt3xuzs.us-east-2.elasticbeanstalk.com/api/agency/${agencyAccountNumber}/note/${noteId}`);
         dispatch({
             type: GET_NOTE,
             payload: res.data
@@ -40,7 +40,7 @@ export const getNote = (agencyAccountNumber, noteId, history) => async dispatch 
 
 export const deleteNote = (agencyAccountNumber, noteId) => async dispatch => {
     if(window.confirm("Delete Note?")) {
-        await axios.delete(`/api/agency/${agencyAccountNumber}/note/${noteId}`);
+        await axios.delete(`http://Nwafbcontacts-env.z5bpt3xuzs.us-east-2.elasticbeanstalk.com/api/agency/${agencyAccountNumber}/note/${noteId}`);
         dispatch({
             type: DELETE_NOTE,
             payload: noteId

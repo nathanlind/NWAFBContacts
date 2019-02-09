@@ -6,7 +6,7 @@ import jwt_decode from "jwt-decode";
 
 export const createNewUser = (newUser, history) => async dispatch => {
     try {
-        await axios.post("/api/user/register", newUser);
+        await axios.post("http://Nwafbcontacts-env.z5bpt3xuzs.us-east-2.elasticbeanstalk.com/api/user/register", newUser);
         history.push("/login");
         dispatch ({
             type: GET_ERRORS,
@@ -24,7 +24,7 @@ export const createNewUser = (newUser, history) => async dispatch => {
 export const login = loginRequest => async dispatch => {
     try {
         // post => Login Request
-        const res = await axios.post("/api/user/login", loginRequest);
+        const res = await axios.post("http://Nwafbcontacts-env.z5bpt3xuzs.us-east-2.elasticbeanstalk.com/api/user/login", loginRequest);
         // extract token from res.data
         const { token } = res.data;
         // store token in localStorage

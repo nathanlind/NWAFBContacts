@@ -4,7 +4,7 @@ import {GET_ERRORS, GET_CONTACT, GET_CONTACTS, DELETE_CONTACT} from "./types";
 
 export const createContact = (agencyAccountNumber, contact, history) => async dispatch => {
     try{
-        await axios.post(`/api/agency/${agencyAccountNumber}/contact`, contact);
+        await axios.post(`http://Nwafbcontacts-env.z5bpt3xuzs.us-east-2.elasticbeanstalk.com/api/agency/${agencyAccountNumber}/contact`, contact);
         history.push("/dashboard");
         dispatch({
             type: GET_ERRORS,
@@ -20,7 +20,7 @@ export const createContact = (agencyAccountNumber, contact, history) => async di
 
 
 export const getContacts = agencyAccountNumber => async dispatch => {
-    const res = await axios.get(`/api/agency/${agencyAccountNumber}/contact/all`);
+    const res = await axios.get(`http://Nwafbcontacts-env.z5bpt3xuzs.us-east-2.elasticbeanstalk.com/api/agency/${agencyAccountNumber}/contact/all`);
     dispatch({
         type: GET_CONTACTS,
         payload: res.data
@@ -30,7 +30,7 @@ export const getContacts = agencyAccountNumber => async dispatch => {
 
 export const getContact = (agencyAccountNumber, contactId, history) => async dispatch => {
     try {
-        const res = await axios.get(`/api/agency/${agencyAccountNumber}/contact/${contactId}`);
+        const res = await axios.get(`http://Nwafbcontacts-env.z5bpt3xuzs.us-east-2.elasticbeanstalk.com/api/agency/${agencyAccountNumber}/contact/${contactId}`);
         dispatch({
             type: GET_CONTACT,
             payload: res.data
@@ -43,7 +43,7 @@ export const getContact = (agencyAccountNumber, contactId, history) => async dis
 
 export const deleteContact = (agencyAccountNumber, contactId) => async dispatch => {
     if(window.confirm("Delete Contact?")) {
-        await axios.delete(`/api/agency/${agencyAccountNumber}/contact/${contactId}`);
+        await axios.delete(`http://Nwafbcontacts-env.z5bpt3xuzs.us-east-2.elasticbeanstalk.com/api/agency/${agencyAccountNumber}/contact/${contactId}`);
         dispatch({
             type: DELETE_CONTACT,
             payload: contactId

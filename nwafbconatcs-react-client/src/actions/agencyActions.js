@@ -4,7 +4,7 @@ import {GET_ERRORS, CREATE_AGENCY, GET_AGENCIES, GET_AGENCY, DELETE_AGENCY} from
 
 export const createAgency = (agency, history) => async dispatch => {
     try {
-        const res = await axios.post("/api/agency", agency);
+        const res = await axios.post("http://Nwafbcontacts-env.z5bpt3xuzs.us-east-2.elasticbeanstalk.com/api/agency", agency);
         history.push("/dashboard");
         dispatch({
             type: CREATE_AGENCY,
@@ -23,7 +23,7 @@ export const createAgency = (agency, history) => async dispatch => {
 };
 
 export const getAgencies = () => async dispatch => {
-    const res = await axios.get("/api/agency/all");
+    const res = await axios.get("http://Nwafbcontacts-env.z5bpt3xuzs.us-east-2.elasticbeanstalk.com/api/agency/all");
     dispatch ({
         type: GET_AGENCIES,
         payload: res.data
@@ -32,7 +32,7 @@ export const getAgencies = () => async dispatch => {
 
 export const getAgency = (agencyAccountNumber) => async dispatch => {
     try {
-        const res = await axios.get(`/api/agency/${agencyAccountNumber}`);
+        const res = await axios.get(`http://Nwafbcontacts-env.z5bpt3xuzs.us-east-2.elasticbeanstalk.com/api/agency/${agencyAccountNumber}`);
         dispatch({
             type: GET_AGENCY,
             payload: res.data
@@ -51,7 +51,7 @@ export const getAgency = (agencyAccountNumber) => async dispatch => {
 
 export const deleteAgency = (agencyAccountNumber) => async dispatch => {
     if(window.confirm("Delete Agency?")) {
-        await axios.delete(`/api/agency/${agencyAccountNumber}`);
+        await axios.delete(`http://Nwafbcontacts-env.z5bpt3xuzs.us-east-2.elasticbeanstalk.com/api/agency/${agencyAccountNumber}`);
         dispatch({
             type: DELETE_AGENCY,
             payload: agencyAccountNumber
