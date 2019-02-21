@@ -30,9 +30,9 @@ export const getAgencies = () => async dispatch => {
     })
 };
 
-export const getAgency = (agencyAccountNumber) => async dispatch => {
+export const getAgency = (agencyName) => async dispatch => {
     try {
-        const res = await axios.get(`http://Nwafbcontacts-env.z5bpt3xuzs.us-east-2.elasticbeanstalk.com/api/agency/${agencyAccountNumber}`);
+        const res = await axios.get(`http://Nwafbcontacts-env.z5bpt3xuzs.us-east-2.elasticbeanstalk.com/api/agency/${encodeURIComponent(agencyName)}`);
         dispatch({
             type: GET_AGENCY,
             payload: res.data

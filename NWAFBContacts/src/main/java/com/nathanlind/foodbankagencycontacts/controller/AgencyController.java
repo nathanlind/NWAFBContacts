@@ -29,10 +29,9 @@ public class AgencyController {
         return agencyService.findAllAgencies();
     }
 
-    @GetMapping("/{agencyAccountNumber}")
-    public ResponseEntity<?> getAgencyByAccountNumber(@PathVariable String agencyAccountNumber) {
-
-        Agency agency = agencyService.findAgencyByAccountNumber(agencyAccountNumber);
+    @GetMapping("/{agencyName}")
+    public ResponseEntity<?> getAgencyByAgencyName(@PathVariable String agencyName) {
+        Agency agency = agencyService.findAgencyByAgencyName(agencyName);
 
         return new ResponseEntity<Agency>(agency, HttpStatus.OK);
     }

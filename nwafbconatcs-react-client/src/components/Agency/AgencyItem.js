@@ -10,6 +10,7 @@ import {getContacts} from "../../actions/contactActions";
 import {getNotes} from "../../actions/noteActions";
 
 
+
 class AgencyItem extends Component {
 
 
@@ -29,7 +30,6 @@ class AgencyItem extends Component {
         const {agency} = this.props;
         const {contacts} = this.props.contact;
         const {notes} = this.props.note;
-
 
         return (
                 <div className="card text-left bg-light shadow p-3 mb-5 bg-white rounded">

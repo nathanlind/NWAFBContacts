@@ -9,6 +9,8 @@ public interface AgencyRepository extends CrudRepository<Agency, Long> {
 
     Agency findByAgencyAccountNumber(String agencyAccountNumber);
 
+    Agency findByAgencyName(String agencyName);
+
     @Override
     Iterable<Agency> findAll();
 }

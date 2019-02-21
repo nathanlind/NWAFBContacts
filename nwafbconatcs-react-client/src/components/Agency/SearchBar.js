@@ -8,7 +8,7 @@ class SearchBar extends Component {
     constructor(props){
         super(props);
         this.state = {
-            agencyAccountNumber: "",
+            agencyName: "",
             errors: {}
         };
         this.onChange = this.onChange.bind(this);
@@ -28,7 +28,7 @@ class SearchBar extends Component {
 
     onSubmit(event) {
         event.preventDefault();
-        this.props.getAgency(this.state.agencyAccountNumber)
+        this.props.getAgency(this.state.agencyName)
     }
 
     render() {
@@ -41,11 +41,11 @@ class SearchBar extends Component {
                     <div className="input-group input-group-lg">
                         <input type="text"
                                className={classnames("form-control",{
-                                   "is-invalid": errors.agencyAccountNumber
+                                   "is-invalid": errors.agencyName
                                })}
-                               placeholder="Agency Account Number"
-                               value={this.state.agencyAccountNumber}
-                               name="agencyAccountNumber"
+                               placeholder="Agency Name"
+                               value={this.state.agencyName}
+                               name="agencyName"
                                onChange={this.onChange}
                         />
                             <div className="input-group-append">
@@ -53,8 +53,8 @@ class SearchBar extends Component {
                                         type="submit"
                                         id="button-addon2">Search</button>
                             </div>
-                        {errors.agencyAccountNumber && (
-                            <div className="text-left invalid-feedback">{errors.agencyAccountNumber}</div>
+                        {errors.agencyName && (
+                            <div className="text-left invalid-feedback">{errors.agencyName}</div>
                         )}
                     </div>
                 </div>

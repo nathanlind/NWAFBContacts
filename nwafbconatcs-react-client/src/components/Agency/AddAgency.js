@@ -225,7 +225,7 @@ class AddAgency extends Component {
                                     <div className="form-row text-left">
                                         <div className="form-group col-md-5">
                                             <label>WebStore Password:</label>
-                                            <input type="text"
+                                            <input type="password"
                                                    className="form-control"
                                                    placeholder="WebStore Password"
                                                    name="agencyWebstorePassword"
@@ -235,7 +235,7 @@ class AddAgency extends Component {
                                         </div>
                                         <div className="form-group col-md-5 offset-2">
                                             <label>Scheduling Password:</label>
-                                            <input type="text"
+                                            <input type="password"
                                                    className="form-control"
                                                    placeholder="Scheduling Password"
                                                    name="agencySchedulingPassword"

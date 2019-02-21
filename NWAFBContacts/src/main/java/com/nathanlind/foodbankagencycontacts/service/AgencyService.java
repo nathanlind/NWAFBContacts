@@ -51,6 +51,16 @@ public class AgencyService {
     }
 
 
+    public Agency findAgencyByAgencyName(String agencyName) {
+        Agency agency = agencyRepository.findByAgencyName(agencyName);
+        if (agency == null) {
+            throw new AgencyNameException("Agency Name '"
+                + agencyName + "' does not exist.");
+        }
+        return agency;
+    }
+
+
     public Iterable<Agency> findAllAgencies() {
         return agencyRepository.findAll();
     }
@@ -64,4 +74,6 @@ public class AgencyService {
         }
         agencyRepository.delete(agency);
     }
+
+
 }
